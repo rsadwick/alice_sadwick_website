@@ -1,0 +1,12 @@
+{%  extends "index.html" %}
+{%  block title %}{{ article.title }}{% endblock %}
+{% block content %}
+    <article>
+        <div class="article-unit">
+            <header>
+                <h1>{{ article.title }}</h1>
+            </header>
+            {% autoescape off %} {{ article.content }} {% endautoescape %}
+        </div>
+    </article>
+{%  endblock %}

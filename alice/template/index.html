@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>{% block title %}Alice Sadwick{% endblock %}</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+        <link rel="shortcut icon" href="http://alicesadwick.com/template/favicon.ico?v=2" />
+        {%  load compress %}
+        {%  compress css %}
+        <link rel="stylesheet" href="/template/css/bootstrap.css">
+        <link rel="stylesheet" href="/template/css/main.css">
+        <link rel="stylesheet" href="/template/css/glisse.css">
+        {% endcompress %}
+        {%  load compress %}
+        {%  compress js %}
+        <script src="/template/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+        {% endcompress %}
+    </head>
+    <body>
+        <!--[if lt IE 9]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+        <nav>
+            <div class="navbar navbar-inverse navbar-fixed-top">
+                <div class="navbar-inner">
+                    <div class="container">
+                        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </a>
+                        <a href="/baby/">
+                            <h1 class="logo ir brand">alice sadwick</h1>
+                        </a>
+                        <div class="nav-collapse collapse">
+                            <ul class="nav">
+                                <!--<li class="active"><a href="#">Home</a></li>-->
+                                <li><a href="/baby/shower/">the shower</a></li>
+                                <li><a href="/baby/birth">birth day</a></li>
+                                <li><a href="/baby/registry">registries</a></li>
+                                <li><a href="/baby/gallery/">gallery</a></li>
+
+                            </ul>
+
+                        </div><!--/.nav-collapse -->
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container">
+            {% block content %}
+            <div class="hero-unit">
+                <img src="{{ MEDIA_URL }}img/hero.jpg" width="942" height="330">
+                <div id="bump-ticker">
+                    <img src="http://global.thebump.com/tickers/tt14da62.aspx" alt="Pregnancy Ticker" border="0"  />
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="span4">
+                    <div class="img-holder">
+                        <img src="{{ MEDIA_URL }}img/{{ baby.fruit_img }}">
+                    </div>
+                    <div class="middle"><span class="label purple label-fruit">{{  baby.fruit_title }}</span></div>
+                </div>
+
+                <div class="span4">
+                    <div class="img-holder">
+                        <img src="{{ MEDIA_URL }}img/{{ baby.baby_img }}">
+                    </div>
+                    <div class="middle"><span class="label purple label-weeks">{{ current_weeks }} weeks</span></div>
+                </div>
+                <div class="span4">
+                    <h2>RSVP to the shower</h2>
+                    <p><span class="icon-heart ir">love</span> Invite only event <span class="icon-heart ir">love</span></p>
+
+                    <form id="form" class="form-horizontal" action="" method="post">{% csrf_token %}
+                        {{ form.non_field_errors }}
+                        <div class="control-group">
+                            <div class="message"></div>
+                            {{ form.name.errors }}
+                            <div id="form_ui">
+                                <label class="control-label" for="id_name">Your Name:</label>
+                                {{ form.name }}
+                                {{ form.coming }}
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <div class="controls form-btn">
+                                <a id="yes" class="btn btn-primary btn-large rsvp-btn">yes</a>
+                                <a id="no" class="btn btn-primary btn-large rsvp-btn">no</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            {%  endblock %}
+
+            <footer>
+                <div class="credit">
+                    <p>Made with lots of <span class="icon-heart ir">love</span> by Justine &amp; Ryan.</p>
+                </div>
+                <div><a href="http://www.djangoproject.com" target="_blank"><div class="pony"></div></a></div>
+            </footer>
+
+        </div> <!-- /container -->
+        {%  load compress %}
+        {%  compress js %}
+        <script src="/template/js/vendor/jquery.js"></script>
+        <script src="/template/js/vendor/bootstrap.min.js"></script>
+        <script src="/template/js/main.js"></script>
+        <script src="/template/js/vendor/glisse.js"></script>
+        {%  endcompress %}
+
+        <script type="text/javascript">
+
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-38216546-1']);
+            _gaq.push(['_setDomainName', 'alicesadwick.com']);
+            _gaq.push(['_trackPageview']);
+
+            (function() {
+                var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+            })();
+
+        </script>
+
+    </body>
+</html>

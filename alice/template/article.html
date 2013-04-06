@@ -1,0 +1,17 @@
+{%  extends "index.html" %}
+{%  block title %}{{ article.title }}{% endblock %}
+{% block content %}
+            <!-- Main hero unit for a primary marketing message or call to action -->
+            <article>
+
+
+                <div class="article-unit">
+                    <header>
+                        <h1>{{ article.title }}</h1>
+                    </header>
+                    {% autoescape off %} {{ article.content }} {% endautoescape %}
+                    <p><a class="btn btn-primary btn-large">Learn more &raquo;</a></p>
+                </div>
+
+            </article>
+            {%  endblock %}

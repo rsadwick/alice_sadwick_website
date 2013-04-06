@@ -1,0 +1,24 @@
+{%  extends "index.html" %}
+{%  block title %}{{ article.title }}{% endblock %}
+{% block content %}
+    <article>
+        <div class="article-unit">
+            <header>
+                <h1>{{ article.title }}</h1>
+            </header>
+            {% autoescape off %} {{ article.content }} {% endautoescape %}
+
+            <div class="image-gallery">
+                <div id="ajax_load"><p>loading...</p>
+                    <div class="progress progress-striped active">
+                        <div class="bar" style="width: 100%;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
+{%  endblock %}
+
+
+
+
