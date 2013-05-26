@@ -57,50 +57,29 @@
             {% block content %}
             <div class="hero-unit">
                 <img src="{{ MEDIA_URL }}img/hero.jpg" width="942" height="330">
-                <div id="bump-ticker">
-                    <img src="http://global.thebump.com/tickers/tt14da62.aspx" alt="Pregnancy Ticker" border="0"  />
-                </div>
             </div>
 
             <div class="row">
-                <div class="span4">
-                    <div class="img-holder">
-                        <img src="{{ MEDIA_URL }}img/{{ baby.fruit_img }}">
-                    </div>
-                    <div class="middle"><span class="label purple label-fruit">{{  baby.fruit_title }}</span></div>
+            <div class="span4">
+                <div class="img-holder">
+                    <img src="{{ MEDIA_URL }}img/{{ baby.img1_title }}">
                 </div>
-
-                <div class="span4">
-                    <div class="img-holder">
-                        <img src="{{ MEDIA_URL }}img/{{ baby.baby_img }}">
-                    </div>
-                    <div class="middle"><span class="label purple label-weeks">{{ current_weeks }} weeks</span></div>
-                </div>
-                <div class="span4">
-                    <h2>RSVP to the shower</h2>
-                    <p><span class="icon-heart ir">love</span> Invite only event <span class="icon-heart ir">love</span></p>
-
-                    <form id="form" class="form-horizontal" action="" method="post">{% csrf_token %}
-                        {{ form.non_field_errors }}
-                        <div class="control-group">
-                            <div class="message"></div>
-                            {{ form.name.errors }}
-                            <div id="form_ui">
-                                <label class="control-label" for="id_name">Your Name:</label>
-                                {{ form.name }}
-                                {{ form.coming }}
-                            </div>
-                        </div>
-
-                        <div class="control-group">
-                            <div class="controls form-btn">
-                                <a id="yes" class="btn btn-primary btn-large rsvp-btn">yes</a>
-                                <a id="no" class="btn btn-primary btn-large rsvp-btn">no</a>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+                <div class="middle"><span class="label purple label-fruit">{{  baby.img1_src }}</span></div>
             </div>
+
+            <div class="span4">
+                <div class="img-holder">
+                    <img src="{{ MEDIA_URL }}img/{{ baby.img2_src }}">
+                </div>
+                <div class="middle"><span class="label purple label-weeks">{{ baby.month }} {{ baby.img2_title }}</span></div>
+            </div>
+            <div class="span4">
+                <div class="img-holder">
+                    <img src="{{ MEDIA_URL }}img/{{ baby.img3_src }}">
+                </div>
+                <div class="middle"><span class="label purple label-weeks">{{ baby.img3_title }}</span></div>
+            </div>
+        </div>
             {%  endblock %}
 
             <footer>

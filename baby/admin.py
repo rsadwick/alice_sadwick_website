@@ -3,7 +3,7 @@ from baby.models import Baby, Rsvp, Article
 
 class BabyAdmin(admin.ModelAdmin):
     # ...
-    list_display = ('week', 'baby_title')
+    list_display = ('month', 'img1_title')
 
 class RsvpAdmin(admin.ModelAdmin):
     list_display = ('name', 'coming')

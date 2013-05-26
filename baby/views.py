@@ -9,11 +9,19 @@ import urllib2
 
 #index
 def index(request):
-    prego_dates = prego.Prego(datetime(2012, 7, 18, 12, 0), datetime.now())
-    current_weeks = prego_dates.getWeeks()
-    baby = Baby.objects.get(week = current_weeks)
+    class Object(object):
+        pass
+    prego_dates = prego.Prego(datetime(2013, 4, 18, 12, 0), datetime.now())
+    current_month = prego_dates.getMonths()[0]
+    baby = Object()
+    try:
+        baby = Baby.objects.get(month = current_month)
+    except:
+        baby.fruit_title = 'test'
+        baby.baby_img = 'test.jpg'
+        baby.fruit_img = 'test.jpg'
 
-    form = RsvpForm()
+    #form = RsvpForm()
     return render_to_response('index.html', locals(), context_instance = RequestContext(request))
 
 def rsvp(request):
